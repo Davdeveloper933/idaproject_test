@@ -63,4 +63,18 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   background: rgba(255, 254, 251, 0.8);
   color: #3F3F3F;
+  font-weight: normal;
+}
+
+*:focus{
+  outline: none;
+}
+
+@media (max-width: 1280px) {
+  .product {
+    width: 30%;
+  }
+  .container {
+    max-width: 1200px;
+  }
 }
