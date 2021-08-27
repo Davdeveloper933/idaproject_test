@@ -19,6 +19,9 @@ export const mutations = {
     state.modal = false;
   },
   toggleModal(state) {
-    state.modal = !state.modal;
+    if(state.modal) {
+      state.modal = false
+    }
+    state.modal = true
   }
 }
