@@ -19,7 +19,7 @@
           </div>
         </div>
     </div>
-    <div v-if="!products.length" class="products-is-empty">
+    <div v-if="products.length < 1" class="products-is-empty">
       There is no products.Add some.
     </div>
   </div>
@@ -32,7 +32,7 @@ export default {
   components: {DeleteButton},
   data() {
     return {
-      hovered:false,
+      products:[],
         test:[
           {
             id:1,
@@ -79,14 +79,18 @@ export default {
         ]
     }
   },
-  computed:{
-    products() {
-      return this.$store.state.products;
-    }
+  // computed:{
+  //   products() {
+  //     return this.$store.state.products;
+  //   }
+  // },
+  created() {
+    this.products = JSON.parse(localStorage.getItem('products'))
   },
   methods:{
     deleteProduct(index) {
-      this.$store.commit('deleteProduct',index)
+      this.$store.commit('deleteProduct',index);
+      location.reload()
     }
   }
 }

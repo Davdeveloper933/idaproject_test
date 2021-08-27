@@ -1,6 +1,6 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div class="sidebar">
-      <div class="sidebar__wrapper">
+      <form method="post" class="sidebar__wrapper">
         <div class="modal-close" @click="close">x</div>
         <label class="form__label">
           <p class="form__label__title required">Наименование товара</p>
@@ -51,7 +51,7 @@
                 :disabled="!validate"
                 @click="addProduct"
         >Добавить товар</button>
-      </div>
+      </form>
   </div>
 </template>
 
