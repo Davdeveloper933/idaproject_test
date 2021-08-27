@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <transition  name="fade" >
+      <transition name="fade" >
         <ModalFilter v-if="open"></ModalFilter>
       </transition>
       <div class="top-wrapper">
@@ -24,11 +24,6 @@ import FilterButton from "~/components/FilterButton";
 import ModalFilter from "~/components/ModalFilter";
 export default {
   components: {ModalFilter, FilterButton},
-  // data() {
-  //   return {
-  //     open:false
-  //   }
-  // },
   computed:{
     open() {
       return this.$store.state.modal

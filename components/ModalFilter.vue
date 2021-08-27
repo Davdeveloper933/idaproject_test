@@ -1,16 +1,26 @@
 <template>
-  <div class="modal-overlay">
-  <div class="mobile-sidebar">
-    <LeftSidebar class="modal"></LeftSidebar>
+  <div  class="modal-overlay">
+  <div  class="mobile-sidebar">
+    <LeftSidebar v-click-outside="close" class="modal"></LeftSidebar>
   </div>
   </div>
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside';
 import LeftSidebar from "~/components/LeftSidebar";
+
 export default {
   name: "ModalFilter",
-  components: {LeftSidebar}
+  components: {LeftSidebar},
+  directives: {
+    ClickOutside
+  },
+  methods:{
+    close() {
+      this.$store.commit('closeModal')
+    }
+  }
 }
 </script>
 

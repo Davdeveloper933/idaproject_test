@@ -56,8 +56,12 @@
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside';
 export default {
   name: "LeftSidebar",
+  directives: {
+    ClickOutside
+  },
   data() {
     return {
       title:null,

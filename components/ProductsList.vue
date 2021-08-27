@@ -15,7 +15,7 @@
             <p class="product__description">
               {{ product.desc }}
             </p>
-            <h3 class="product__price">{{ product.price }} руб.</h3>
+            <h3 class="product__price">{{ product.price | price}} руб.</h3>
           </div>
         </div>
     </div>
@@ -30,6 +30,36 @@ import DeleteButton from "~/components/deleteButton";
 export default {
   name: "ProductsList",
   components: {DeleteButton},
+  filters:{
+    price(price) {
+      let firstNums;
+      let midNums;
+      let lastNums;
+      if(price >= 10000 && price < 100000) {
+        price = price.toString();
+        firstNums = price.slice(0,2);
+        lastNums = price.slice(2);
+        return firstNums+" "+lastNums;
+      }else if(price >= 100000 && price < 1000000) {
+        price = price.toString();
+        firstNums = price.slice(0,3);
+        lastNums = price.slice(3);
+        return firstNums+" "+lastNums;
+      }else if(price >= 1000000 && price < 10000000) {
+        price = price.toString();
+        firstNums = price.slice(0,1);
+        midNums = price.slice(1,4);
+        lastNums = price.slice(4);
+        return firstNums+" "+midNums+" "+lastNums;
+      }else if(price >= 10000000) {
+        price = price.toString();
+        firstNums = price.slice(0,2);
+        midNums = price.slice(2,5);
+        lastNums = price.slice(5);
+        return firstNums+" "+midNums+" "+lastNums;
+      }
+    }
+  },
   data() {
     return {
       products:[],
@@ -79,11 +109,6 @@ export default {
         ]
     }
   },
-  // computed:{
-  //   products() {
-  //     return this.$store.state.products;
-  //   }
-  // },
   created() {
     this.products = JSON.parse(localStorage.getItem('products'))
   },
