@@ -119,18 +119,15 @@ export default {
 <style scoped lang="scss">
   .sidebar {
     background: #FFFEFB;
-    //box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
     width: 26%;
-    //height: fit-content;
+    height: fit-content;
     &__wrapper {
       padding: 24px;
       display: flex;
       flex-direction: column;
       position: relative;
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
-      height: fit-content;
-      border-radius: 4px;
     }
   }
   .form {

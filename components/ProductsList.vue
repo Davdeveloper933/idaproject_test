@@ -91,7 +91,6 @@ export default {
 <style scoped lang="scss">
   .products {
     width: 74%;
-    margin-top: 10px;
     position: relative;
     &__wrapper {
       display: flex;

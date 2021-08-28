@@ -12,7 +12,7 @@
         <div class="filter-btn">По умолчанию</div>
       </div>
       <div class="mobile-panel">
-        <FilterButton @click.native="modal"></FilterButton>
+        <FilterButton class="modal-btn" @click.native="modal" ></FilterButton>
       </div>
       <div class="main-wrapper">
         <LeftSidebar/>
@@ -74,11 +74,14 @@ export default {
       margin-left: 5px;
     }
   }
+  .modal-btn {
+    display: inline-block;
+  }
   .top-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 25px;
   }
 
   .main-wrapper {
@@ -102,6 +105,7 @@ export default {
     }
     .mobile-panel {
       display: block;
+      margin-bottom: 20px;
     }
     .sidebar {
       display: none;
@@ -113,6 +117,9 @@ export default {
       align-items: normal;
       margin-bottom: 16px;
       flex-direction: column;
+    }
+    .add-product {
+      margin-bottom: 10px;
     }
   }
 </style>

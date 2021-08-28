@@ -30,6 +30,7 @@ export default {
 <style scoped lang="scss">
 .filter-svg {
   cursor: pointer;
+  display: inline-block;
   & svg {
     transform: rotate(90deg);
     width: 30px;
