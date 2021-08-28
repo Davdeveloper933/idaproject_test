@@ -3,6 +3,10 @@ export const state = () => ({
   modal:false
 })
 
+export const getters = {
+  getProducts:(state)=> state.products
+}
+
 export const mutations = {
   addProduct(state,product) {
     state.products = JSON.parse(localStorage.getItem('products')) || state.products;
@@ -13,7 +17,9 @@ export const mutations = {
     state.products = JSON.parse(localStorage.getItem('products')) || state.products;
     state.products.splice(index,1);
     localStorage.setItem('products',JSON.stringify(state.products))
-    state.products = JSON.parse(localStorage.getItem('products'));
+  },
+  loadProducts(state) {
+    state.products = JSON.parse(localStorage.getItem('products'))
   },
   closeModal(state) {
     state.modal = false;

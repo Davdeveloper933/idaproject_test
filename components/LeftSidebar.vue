@@ -1,6 +1,6 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div class="sidebar">
-      <form method="post" class="sidebar__wrapper">
+      <div class="sidebar__wrapper">
         <div class="modal-close" @click="close">x</div>
         <label class="form__label">
           <p class="form__label__title required">Наименование товара</p>
@@ -46,12 +46,12 @@
           >
           <p v-if="error && !price" class="error-text" >Поле является обязательным</p>
         </label>
-        <button type="submit" class="submit-btn"
+        <button class="submit-btn"
                 :class="{'disabled':!validate}"
                 :disabled="!validate"
                 @click="addProduct"
         >Добавить товар</button>
-      </form>
+      </div>
   </div>
 </template>
 
@@ -68,7 +68,8 @@ export default {
       description:null,
       link:null,
       price:null,
-      error:false
+      error:false,
+      products:[]
     }
   },
   computed:{
@@ -94,7 +95,7 @@ export default {
       submit() {
         alert('clicked')
       },
-    addProduct(e) {
+    addProduct() {
         const product = {
           title:this.title,
           desc:this.description,

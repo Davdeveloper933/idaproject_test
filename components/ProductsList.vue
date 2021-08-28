@@ -1,8 +1,11 @@
 <template>
   <div class="products">
     <div class="products__wrapper">
+<!--      <p v-for="(product,index) in products" :key="index">-->
+<!--        <span>{{ product.title }}</span>-->
+<!--      </p>-->
         <div
-          v-for="(product,index) in products"
+          v-for="(product,index) in getProducts"
           :key="index"
           class="product"
           >
@@ -57,65 +60,28 @@ export default {
         midNums = price.slice(2,5);
         lastNums = price.slice(5);
         return firstNums+" "+midNums+" "+lastNums;
+      }else {
+        return price;
       }
     }
   },
   data() {
     return {
-      products:[],
-        test:[
-          {
-            id:1,
-            title:'www',
-            description:'eeee',
-            link:'https://thechive.com/wp-content/uploads/2015/12/screen-shot-2015-12-27-at-8-40-45-pm.png?attachment_cache_bust=1222535&w=400',
-            price:10000
-          },
-          {
-            id:2,
-            title:'www',
-            description:'eeee',
-            link:'https://thechive.com/wp-content/uploads/2015/12/screen-shot-2015-12-27-at-8-40-45-pm.png?attachment_cache_bust=1222535&w=400',
-            price:10000
-          },
-          {
-            id:3,
-            title:'www',
-            description:'eeee',
-            link:'https://thechive.com/wp-content/uploads/2015/12/screen-shot-2015-12-27-at-8-40-45-pm.png?attachment_cache_bust=1222535&w=400',
-            price:10000
-          },
-          {
-            id:4,
-            title:'www',
-            description:'eeee',
-            link:'https://thechive.com/wp-content/uploads/2015/12/screen-shot-2015-12-27-at-8-40-45-pm.png?attachment_cache_bust=1222535&w=400',
-            price:10000
-          },
-          {
-            id:5,
-            title:'www',
-            description:'eeee',
-            link:'https://thechive.com/wp-content/uploads/2015/12/screen-shot-2015-12-27-at-8-40-45-pm.png?attachment_cache_bust=1222535&w=400',
-            price:10000
-          },
-          {
-            id:6,
-            title:'www',
-            description:'eeee',
-            link:'https://thechive.com/wp-content/uploads/2015/12/screen-shot-2015-12-27-at-8-40-45-pm.png?attachment_cache_bust=1222535&w=400',
-            price:10000
-          }
-        ]
+      products:[]
+    }
+  },
+  computed:{
+    getProducts() {
+      return this.$store.state.products;
     }
   },
   created() {
-    this.products = JSON.parse(localStorage.getItem('products'))
+    // this.getProducts = JSON.parse(localStorage.getItem('products'));
+    this.$store.commit('loadProducts')
   },
   methods:{
     deleteProduct(index) {
       this.$store.commit('deleteProduct',index);
-      location.reload()
     }
   }
 }
