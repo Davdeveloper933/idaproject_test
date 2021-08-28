@@ -1,8 +1,11 @@
 <template>
   <div>
     <div class="container">
-      <transition name="fade" >
+      <transition name="fade">
         <ModalFilter v-if="open"></ModalFilter>
+      </transition>
+      <transition name="fade">
+        <Preloader v-if="preloader"></Preloader>
       </transition>
       <div class="top-wrapper">
         <h2 class="add-product">Добавление товара</h2>
@@ -22,11 +25,15 @@
 <script>
 import FilterButton from "~/components/FilterButton";
 import ModalFilter from "~/components/ModalFilter";
+import Preloader from "~/components/Preloader";
 export default {
-  components: {ModalFilter, FilterButton},
+  components: {ModalFilter, FilterButton,Preloader},
   computed:{
     open() {
       return this.$store.state.modal
+    },
+    preloader() {
+      return this.$store.state.preload
     }
   },
   methods:{
@@ -54,9 +61,9 @@ export default {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
     color: #B4B4B4;
-    width: 121px;
+    max-width: 150px;
     text-align: center;
     padding: 10px 16px;
     cursor: pointer;

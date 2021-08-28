@@ -1,9 +1,6 @@
 <template>
   <div class="products">
     <div class="products__wrapper">
-<!--      <p v-for="(product,index) in products" :key="index">-->
-<!--        <span>{{ product.title }}</span>-->
-<!--      </p>-->
         <div
           v-for="(product,index) in getProducts"
           :key="index"
@@ -22,7 +19,7 @@
           </div>
         </div>
     </div>
-    <div v-if="products.length < 1" class="products-is-empty">
+    <div v-if="getProducts.length < 1" class="products-is-empty">
       There is no products.Add some.
     </div>
   </div>
@@ -81,7 +78,11 @@ export default {
   },
   methods:{
     deleteProduct(index) {
-      this.$store.commit('deleteProduct',index);
+      setTimeout(()=>{
+        this.$store.commit('deleteProduct',index);
+        this.$store.commit("preloadAnimationStop")
+      },700)
+      this.$store.commit("preloadAnimation")
     }
   }
 }
@@ -91,6 +92,7 @@ export default {
   .products {
     width: 74%;
     margin-top: 10px;
+    position: relative;
     &__wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -104,6 +106,7 @@ export default {
     position: relative;
     margin-left: 25px;
     cursor: pointer;
+    background: white;
     &:hover .delete-btn {
       display: flex;
     }

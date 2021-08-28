@@ -1,6 +1,7 @@
 export const state = () => ({
   products:[],
-  modal:false
+  modal:false,
+  preload:false
 })
 
 export const getters = {
@@ -25,9 +26,12 @@ export const mutations = {
     state.modal = false;
   },
   toggleModal(state) {
-    if(state.modal) {
-      state.modal = false
-    }
-    state.modal = true
+      state.modal = true
+  },
+  preloadAnimation(state) {
+    state.preload = true
+  },
+  preloadAnimationStop(state) {
+    state.preload = false
   }
 }
