@@ -62,6 +62,12 @@ export default {
       }
     }
   },
+  props:{
+    selected:{
+      type:String,
+      default:'default'
+    }
+  },
   data() {
     return {
       products:[]
@@ -69,7 +75,19 @@ export default {
   },
   computed:{
     getProducts() {
-      return this.$store.state.products;
+      // const prices = [];
+      if(this.selected === 'min'){
+        this.$store.commit('sortByMin');
+        return this.$store.state.productsClone;
+      }else if(this.selected === 'max') {
+        this.$store.commit('sortByMax');
+        return this.$store.state.productsClone;
+      }else if(this.selected === 'a-z') {
+        this.$store.commit('sortByTitle');
+        return this.$store.state.productsClone;
+      }else {
+        return this.$store.state.products;
+      }
     }
   },
   created() {
@@ -148,6 +166,7 @@ export default {
     align-items: center;
     height: 100%;
   }
+
   @media (max-width: 1280px) {
     .product {
       width: 28%;

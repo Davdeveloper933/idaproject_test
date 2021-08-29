@@ -74,6 +74,10 @@ body {
   outline: none;
 }
 
+select {
+  border: none;
+}
+
 @media (max-width: 1280px) {
   .product {
     width: 30%;

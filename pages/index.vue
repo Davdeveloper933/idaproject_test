@@ -9,14 +9,19 @@
       </transition>
       <div class="top-wrapper">
         <h2 class="add-product">Добавление товара</h2>
-        <div class="filter-btn">По умолчанию</div>
+        <select v-model="selected" class="filter-btn">
+          <option value="default" selected>По умолчанию</option>
+          <option value="a-z">A - Z</option>
+          <option value="max">Maximum price</option>
+          <option value="min">Minimum price</option>
+        </select>
       </div>
       <div class="mobile-panel">
         <FilterButton class="modal-btn" @click.native="modal" ></FilterButton>
       </div>
       <div class="main-wrapper">
         <LeftSidebar/>
-        <ProductsList/>
+        <ProductsList :selected="selected"></ProductsList>
       </div>
     </div>
   </div>
@@ -28,6 +33,11 @@ import ModalFilter from "~/components/ModalFilter";
 import Preloader from "~/components/Preloader";
 export default {
   components: {ModalFilter, FilterButton,Preloader},
+  data() {
+    return {
+      selected:'default'
+    }
+  },
   computed:{
     open() {
       return this.$store.state.modal

@@ -1,4 +1,4 @@
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<template>
   <div class="sidebar">
       <div class="sidebar__wrapper">
         <div class="modal-close" @click="close">x</div>
@@ -68,8 +68,7 @@ export default {
       description:null,
       link:null,
       price:null,
-      error:false,
-      products:[]
+      error:false
     }
   },
   computed:{
@@ -79,9 +78,6 @@ export default {
       }else {
         return false;
       }
-    },
-    a() {
-      return this.$store.state.fruits;
     }
   },
   methods:{

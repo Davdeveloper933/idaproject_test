@@ -1,5 +1,6 @@
 export const state = () => ({
   products:[],
+  productsClone:[],
   modal:false,
   preload:false
 })
@@ -20,7 +21,7 @@ export const mutations = {
     localStorage.setItem('products',JSON.stringify(state.products))
   },
   loadProducts(state) {
-    state.products = JSON.parse(localStorage.getItem('products'))
+    state.products = JSON.parse(localStorage.getItem('products')) || state.products;
   },
   closeModal(state) {
     state.modal = false;
@@ -33,5 +34,25 @@ export const mutations = {
   },
   preloadAnimationStop(state) {
     state.preload = false
+  },
+  sortByMin(state) {
+    state.productsClone = JSON.parse(JSON.stringify(state.products));
+    state.productsClone.sort((a,b) => parseInt(a.price) - parseInt(b.price))
+  },
+  sortByMax(state) {
+    state.productsClone = JSON.parse(JSON.stringify(state.products));
+    state.productsClone.sort((a,b) => parseInt(b.price) - parseInt(a.price))
+  },
+  sortByTitle(state) {
+    state.productsClone = JSON.parse(JSON.stringify(state.products));
+    state.productsClone.sort(function (a,b) {
+      if ( a.title < b.title ){
+        return -1;
+      }
+      if ( a.title > b.title ){
+        return 1;
+      }
+      return 0;
+    })
   }
 }
