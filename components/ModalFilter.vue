@@ -18,7 +18,7 @@ export default {
   },
   methods:{
     close() {
-      this.$store.commit('closeModal')
+        this.$store.commit('closeModal')
     }
   }
 }
