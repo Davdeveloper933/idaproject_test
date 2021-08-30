@@ -114,16 +114,32 @@ export default {
 
 <style scoped lang="scss">
   .sidebar {
-    background: #FFFEFB;
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
+    //background: #FFFEFB;
+    //box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
     width: 26%;
-    height: fit-content;
+    position: relative;
+    margin-right: 16px;
     &__wrapper {
+      height: fit-content;
       padding: 24px;
       display: flex;
       flex-direction: column;
-      position: relative;
+      position: fixed;
+      width: inherit;
+      background: #FFFEFB;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
+    }
+    &.modal {
+      background: #FFFEFB;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
+      height: fit-content;
+      & .sidebar__wrapper {
+        background: unset;
+        box-shadow: unset;
+        position: relative;
+        width: unset;
+      }
     }
   }
   .form {

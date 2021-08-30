@@ -27,7 +27,7 @@ export const mutations = {
     state.modal = false;
   },
   toggleModal(state) {
-      state.modal = true
+    state.modal = true
   },
   preloadAnimation(state) {
     state.preload = true

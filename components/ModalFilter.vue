@@ -1,7 +1,7 @@
 <template>
   <div  class="modal-overlay">
   <div  class="mobile-sidebar">
-    <LeftSidebar v-click-outside="close" class="modal"></LeftSidebar>
+    <LeftSidebar class="modal"></LeftSidebar>
   </div>
   </div>
 </template>

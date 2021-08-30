@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="container">
-      <transition name="fade">
-        <ModalFilter v-if="open"></ModalFilter>
+      <transition v-if="open" name="fade">
+        <ModalFilter ></ModalFilter>
       </transition>
       <transition name="fade">
         <Preloader v-if="preloader"></Preloader>
