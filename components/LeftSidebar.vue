@@ -38,9 +38,10 @@
           <p class="form__label__title required">Цена товара</p>
           <input
             v-model="price"
+            v-maska="['# ###', '## ###','###','### ###','### ### ###']"
             :class="{ 'error':error && !price}"
             class="form__input"
-            type="number"
+            type="text"
             placeholder="Введите цену"
             @blur="onBlur"
           >
@@ -56,11 +57,44 @@
 </template>
 
 <script>
+import { maska } from 'maska'
 import ClickOutside from 'vue-click-outside';
 export default {
   name: "LeftSidebar",
   directives: {
-    ClickOutside
+    ClickOutside,maska
+  },
+  filters:{
+    price(price) {
+      let firstNums;
+      let midNums;
+      let lastNums;
+      if(price >= 10000 && price < 100000) {
+        price = price.toString();
+        firstNums = price.slice(0,2);
+        lastNums = price.slice(2);
+        return firstNums+" "+lastNums;
+      }else if(price >= 100000 && price < 1000000) {
+        price = price.toString();
+        firstNums = price.slice(0,3);
+        lastNums = price.slice(3);
+        return firstNums+" "+lastNums;
+      }else if(price >= 1000000 && price < 10000000) {
+        price = price.toString();
+        firstNums = price.slice(0,1);
+        midNums = price.slice(1,4);
+        lastNums = price.slice(4);
+        return firstNums+" "+midNums+" "+lastNums;
+      }else if(price >= 10000000) {
+        price = price.toString();
+        firstNums = price.slice(0,2);
+        midNums = price.slice(2,5);
+        lastNums = price.slice(5);
+        return firstNums+" "+midNums+" "+lastNums;
+      }else {
+        return price;
+      }
+    }
   },
   data() {
     return {
