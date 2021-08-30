@@ -134,6 +134,7 @@ export default {
       background: #FFFEFB;
       box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
       height: fit-content;
+      margin-right: 0;
       & .sidebar__wrapper {
         background: unset;
         box-shadow: unset;

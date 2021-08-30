@@ -28,9 +28,9 @@ export default {
   .mobile-sidebar {
     position: absolute;
     width: 100%;
-    top: 50%;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     display: flex;
     justify-content: center;
     z-index: 2000;
