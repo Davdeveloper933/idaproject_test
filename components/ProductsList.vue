@@ -36,11 +36,6 @@ export default {
       default:'default'
     }
   },
-  data() {
-    return {
-      products:[]
-    }
-  },
   computed:{
     getProducts() {
       // const prices = [];
